@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
+
 Route::group(['scheme' => 'https'], function () {
     Route::post('login', 'UserController@login');
     Route::post('register', 'UserController@register');
