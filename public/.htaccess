@@ -14,12 +14,12 @@
     RewriteCond %{HTTPS} !on
     RewriteCond %{ENV:HTTPS} !on
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,P]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
+    RewriteRule ^ %1 [L,P]
 
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
